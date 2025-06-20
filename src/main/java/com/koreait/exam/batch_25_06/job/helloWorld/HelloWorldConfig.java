@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
@@ -29,11 +31,13 @@ public class HelloWorldConfig {
     }
 
     @Bean
+    @JobScope
     public Step helloWorldStep1() {
         return stepBuilderFactory.get("helloWorldStep1").tasklet(helloWorldTasklet()).build();
     }
 
     @Bean
+    @StepScope
     public Tasklet helloWorldTasklet() {
         return (contribution, chunkContext) -> {
             System.out.println("헬로월드!!!");
