@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Date;
+
 @Configuration
 @RequiredArgsConstructor
 @Slf4j
@@ -44,12 +46,14 @@ public class WithParamJobConfig {
     @StepScope
     public Tasklet WithParamStep1Tasklet(
             @Value("#{jobParameters['name']}") String name,
-            @Value("#{jobParameters['age']}") String age) {
+            @Value("#{jobParameters['age']}") Long age,
+            @Value("#{jobParameters['date']}") String date) {
         return (stepContribution, chunkContext) -> {
 
             log.info("name: {}, age: {}", name, age);
+            log.info("name: {}, age: {}, date : {}", name, age,date);
             System.out.println("withParam 111111111111111!!!");
-            System.out.printf("%s: %s\n", name, age);
+            System.out.printf("%s: %d\n", name, age);
             return RepeatStatus.FINISHED;
         };
     }
