@@ -64,9 +64,9 @@ public class HelloWorldJobConfig {
         return (contribution, chunkContext) -> {
             System.out.println("헬로월드!!!2222");
 
-            if(true){
-                throw new Exception("실패 : 헬로 월드 태스클릿 2 실패");
-            }
+//            if(true){
+//                throw new Exception("실패 : 헬로 월드 태스클릿 2 실패");
+//            }
 
             return RepeatStatus.FINISHED;
         };
