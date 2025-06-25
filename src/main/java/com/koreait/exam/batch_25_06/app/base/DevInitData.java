@@ -2,6 +2,7 @@ package com.koreait.exam.batch_25_06.app.base;
 
 import com.koreait.exam.batch_25_06.app.cart.service.CartService;
 import com.koreait.exam.batch_25_06.app.member.entity.Member;
+import com.koreait.exam.batch_25_06.app.order.service.OrderService;
 import com.koreait.exam.batch_25_06.app.product.entity.Product;
 import com.koreait.exam.batch_25_06.app.product.entity.ProductOption;
 import com.koreait.exam.batch_25_06.app.member.service.MemberService;
@@ -18,7 +19,8 @@ import java.util.Arrays;
 public class DevInitData {
 
     @Bean
-    public CommandLineRunner initData(MemberService memberService, ProductService productService, CartService cartService) {
+    public CommandLineRunner initData(MemberService memberService, ProductService productService, CartService cartService,
+                                      OrderService orderService) {
         return args -> {
             String password = "{noop}1234";
             Member member1 = memberService.join("user1", password, "user1@test.com");
@@ -49,6 +51,8 @@ public class DevInitData {
             cartService.addItem(member1, productOption__RED_95, 1); // 회원1이 productOption__RED_95 1개 추가 / 총 수량 : 1
             cartService.addItem(member1, productOption__RED_95, 2); // 회원1이 productOption__RED_95 2개 추가 / 총 수량 : 3
             cartService.addItem(member1, productOption__BLUE_95, 1); // 회원1이 productOption__BLUE_95 1개 추가 / 총 수량 : 1
+
+            orderService.createFromCart(member1);
 
         };
     }
