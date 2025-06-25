@@ -21,7 +21,13 @@ import static javax.persistence.FetchType.LAZY;
 public class ProductOption extends BaseEntity {
     private String color;
     private String size;
+
     private Integer price;
+    private int wholeSalePrice;
+    private int salePrice;
+
+    private String displayColor;
+    private String displaySize;
 
     private boolean isSoldOut; // 관련 옵션의 판매가능 여부
     private int stockQuantity; // 보유 물건 수량
@@ -33,7 +39,9 @@ public class ProductOption extends BaseEntity {
 
     public ProductOption(String color, String size) {
         this.color = color;
+        this.displayColor = color;
         this.size = size;
+        this.displaySize = size;
     }
 
     public boolean isOrderable(int quantity) {
