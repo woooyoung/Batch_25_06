@@ -22,9 +22,15 @@ public class ProductOption extends BaseEntity {
     private String color;
     private String size;
 
-    private Integer price;
-    private int wholeSalePrice;
-    private int salePrice;
+    private int price; // 권장 판매가 30000
+    private int salePrice; // 실제 판매가 40000
+    private int wholeSalePrice; // 도매가 < 30000
+    private int payPrice; // 결제 금액
+    private int refundPrice; // 환불 금액
+    private int pgFee; // 결제대행사 수수료
+    private int refundQuantity; // 환불 갯수
+    private boolean idPaid; // 결제 여부
+
 
     private String displayColor;
     private String displaySize;
