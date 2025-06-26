@@ -20,6 +20,7 @@ public class ProductService {
 
         Product product = Product.builder()
                 .name(name)
+                .salePrice(salePrice)
                 .price(price)
                 .wholeSalePrice(wholeSalePrice)
                 .makerShopName(makerShopName).build();
