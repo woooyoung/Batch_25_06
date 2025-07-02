@@ -23,8 +23,10 @@ public class Product extends BaseEntity {
     private String name;
     private int salePrice;
     private int price;
-    private int wholeSalePrice;
+    private int wholesalePrice;
     private String makerShopName;
+
+    private boolean isSoldOut;
 
     @Builder.Default
     @OneToMany(mappedBy = "product", cascade = ALL, orphanRemoval = true)
@@ -33,7 +35,7 @@ public class Product extends BaseEntity {
     public void addProductOption(ProductOption option) {
         option.setProduct(this);
         option.setPrice(getPrice());
-        option.setWholeSalePrice(getWholeSalePrice());
+        option.setWholesalePrice(getWholesalePrice());
         option.setSalePrice(getSalePrice());
 
         productOptions.add(option);

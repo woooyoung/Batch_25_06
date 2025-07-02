@@ -34,7 +34,7 @@ public class OrderItem extends BaseEntity {
     //가격
     private int price; // 권장 판매가 30000
     private int salePrice; // 실제 판매가 40000
-    private int wholeSalePrice; // 도매가 < 30000
+    private int wholesalePrice; // 도매가 < 30000
     private int payPrice; // 결제 금액
     private int refundPrice; // 환불 금액
     private int pgFee; // 결제대행사 수수료
@@ -46,7 +46,7 @@ public class OrderItem extends BaseEntity {
         this.quantity = quantity;
         this.price = productOption.getPrice();
         this.salePrice = productOption.getSalePrice();
-        this.wholeSalePrice = productOption.getWholeSalePrice();
+        this.wholesalePrice = productOption.getWholesalePrice();
     }
 
     public int calculatePayPrice() {

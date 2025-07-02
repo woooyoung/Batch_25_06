@@ -7,7 +7,7 @@ spring:
       ddl-auto: create
   batch:
     job:
-      name: ${job.name:NONE}
+      names: ${job.name:NONE}
     jdbc:
       initialize-schema: always
   datasource:
